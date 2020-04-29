@@ -1,0 +1,148 @@
+html,body {
+    width: 100vw;
+    height: 100vh;
+    font-family: sans-serif;
+    background: #264653;
+    transition: all 1s;
+}
+
+body {
+  overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+.loader {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    zoom: 1.5;
+}
+.loader:after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: url('img/bottle.svg') no-repeat;
+    background-size: contain;
+    position: relative;
+}
+.progress {
+    height: 100%;
+    width: 100%;
+    background-color: #f4a261;
+    animation: rotate 2s linear infinite;
+    border-radius: 30%;
+    position: absolute;
+    transition: all 0.5s;
+}
+.bubble {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 100%;
+  opacity: 0;
+  animation: bubble-up 2s ease-in;
+}
+.bubble:before {
+  content: '';
+  display:block;
+  width: 80%;
+  height: 80%;
+  margin-top: 2px;
+  margin-left: 2px;
+  transform: rotateZ(-45deg);
+  border-radius: 100%;
+  border-left: 1px solid rgba(255,255,255,0.5);
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateZ(0);
+    }
+    100% {
+        transform: rotateZ(180deg);
+    }
+}
+
+@keyframes bubble-up {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(10px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-10px);
+  }
+  100% {
+    bottom: 50%;
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+/* ------- video #2 --------- 
+  palette: #264653 #2a9d8f #e9c46a #f4a261 #e76f51;
+*/
+
+body.loaded {
+    background: #2a9d8f;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+}
+
+.layer-start {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: #264653;
+  margin-top: 0;
+  transition: all 2s cubic-bezier(0.73, 0.02, 0.43, 0.88);
+}
+.layer-start.slide-hide {
+  margin-top: -100vh;
+}
+
+.layer-article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 2s ease-out;
+  background-image: url(/img/downtown.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: calc(100vw + 600px);
+  transform: translateX(0);
+}
+.layer-article.slide-show {
+  margin-top: 0;
+  margin-left: 0;
+  transform: translateX(-300px);
+}
+
+h1 {
+    background: #264653;
+    padding: 6px 10px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* SereZHka */
+
+.hero-page {
+  /* background-image: url(/img/downtown.jpg);
+  background-position: center;
+  height: 100vh; */
+}
