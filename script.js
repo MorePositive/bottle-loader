@@ -33,6 +33,5 @@ const loaded = function() {
 	layerArticleEl.classList.add('slide-show');
 	layerStartEl.classList.add('slide-hide');	
 }
-
 progressiveLoad(0);
 
