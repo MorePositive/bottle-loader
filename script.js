@@ -22,7 +22,7 @@ const bubble = function() {
 
 const progressiveLoad = function(state) {
 	if(state >= 100) return loaded();
-	state += Math.round(Math.random()*5);
+	state += Math.round(Math.random()*25);
 	progress(state);
 	(state % 2) && bubble();
 	setTimeout(progressiveLoad.bind(this, state), Math.random()*400);
