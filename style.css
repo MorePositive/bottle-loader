@@ -66,17 +66,9 @@
     overflow: hidden;
   }
 
-  body {
-    font: 100% / 1.5 Arial;
-  }
-
   * {
     margin:0;
     padding:0;
-  }
-
-  .parallax {
-    font-size: 200%;
   }
 
    /* centre the content in the parallax layers */
@@ -101,8 +93,34 @@
     align-items: center;
     flex-direction: column;
     color: #fff;
+    font-size: 64px;
   }
 
+  .glass {
+    background-image: url(/img/blue-bottle.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .content {
+    max-width: 1600px;
+    margin: auto;
+    color: #fff;
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  #group7 {
+    
+    
+  }
+  .footer {
+    background-image: url(/img/woman.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #000;
+  }
 
   /* style the groups
   --------------------------------------------- */
@@ -121,15 +139,9 @@
   #group3 {
     z-index: 4; /* slide over group 2 and 4 */
   }
-  #group3 .parallax__layer--base {
-    background: rgb(153,216,101);
-  }
 
   #group7 {
     z-index: 3; /* slide over group 7 */
-  }
-  #group7 .parallax__layer--base {
-    background: rgb(255,241,100);
   }
 
   /* LOADER */ 
