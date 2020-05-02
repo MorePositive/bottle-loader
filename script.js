@@ -1,7 +1,5 @@
 const progressEl = document.querySelector('.loader .progress');
-const layerStartEl = document.querySelector('.layer-start');
-const bubblesEl = layerStartEl.querySelector('.bubbles');
-const layerArticleEl = document.querySelector('.layer-article');
+const bubblesEl = document.querySelector('.bubbles');
 
 const progress = function(value) {
 	value = Math.max(0, Math.min(90, value));
@@ -29,9 +27,10 @@ const progressiveLoad = function(state) {
 }
 
 const loaded = function() {
-	document.body.classList.add('loaded');
-	layerArticleEl.classList.add('slide-show');
-	layerStartEl.classList.add('slide-hide');	
+	document.querySelector('.parallax').scroll({
+		top: window.innerHeight,
+		left: 0,
+		behavior: 'smooth'
+	});
 }
 progressiveLoad(0);
-

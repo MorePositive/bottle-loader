@@ -1,187 +1,223 @@
-html,
-body {
-  width: 100vw;
-  height: 100vh;
-  font-family: sans-serif;
-  background: #264653;
-  transition: all 1s;
-}
 
-body {
-  overflow: hidden;
-}
 
-.hidden {
-  display: none;
-}
 
-.loader {
-  width: 100px;
-  height: 100px;
-  position: relative;
-  overflow: hidden;
-  zoom: 1.5;
-}
+  /* Parallax base styles
+  --------------------------------------------- */
 
-.loader:after {
-  content: '';
-  display: block;
-  height: 100%;
-  width: 100%;
-  background: url('img/bottle.svg') no-repeat;
-  background-size: contain;
-  position: relative;
-}
-
-.progress {
-  height: 100%;
-  width: 100%;
-  background-color: #f4a261;
-  animation: rotate 2s linear infinite;
-  border-radius: 30%;
-  position: absolute;
-  transition: all 0.5s;
-}
-
-.bubble {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 100%;
-  opacity: 0;
-  animation: bubble-up 2s ease-in;
-}
-
-.bubble:before {
-  content: '';
-  display: block;
-  width: 80%;
-  height: 80%;
-  margin-top: 2px;
-  margin-left: 2px;
-  transform: rotateZ(-45deg);
-  border-radius: 100%;
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotateZ(0);
+  .parallax {
+    height: 500px; /* fallback for older browsers */
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-perspective: 300px;
+    perspective: 300px;
   }
 
-  100% {
-    transform: rotateZ(180deg);
+  .parallax__group {
+    position: relative;
+    height: 500px; /* fallback for older browsers */
+    height: 100vh;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
   }
-}
 
-@keyframes bubble-up {
-  0% {
+  .parallax__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .parallax__layer--fore {
+    -webkit-transform: translateZ(90px) scale(.7);
+    transform: translateZ(90px) scale(.7);
+    z-index: 1;
+  }
+
+  .parallax__layer--base {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 4;
+  }
+
+  .parallax__layer--back {
+    -webkit-transform: translateZ(-300px) scale(2);
+    transform: translateZ(-300px) scale(2);
+    z-index: 3;
+  }
+
+  .parallax__layer--deep {
+    -webkit-transform: translateZ(-600px) scale(3);
+    transform: translateZ(-600px) scale(3);
+    z-index: 2;
+  }
+
+  .parallax__group {
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+  }
+
+
+  /* demo styles
+  --------------------------------------------- */
+
+  body, html {
+    overflow: hidden;
+  }
+
+  body {
+    font: 100% / 1.5 Arial;
+  }
+
+  * {
+    margin:0;
+    padding:0;
+  }
+
+  .parallax {
+    font-size: 200%;
+  }
+
+   /* centre the content in the parallax layers */
+  .title {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .downtown {
+    background-image: url(/img/downtown.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .greeting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+  }
+
+
+  /* style the groups
+  --------------------------------------------- */
+
+  #group1 {
+    z-index: 5; /* slide over group 2 */
+  }
+  #group1 .parallax__layer--base {
+    background: #264653;
+  }
+
+  #group2 {
+    z-index: 3; /* slide under groups 1 and 3 */
+  }
+
+  #group3 {
+    z-index: 4; /* slide over group 2 and 4 */
+  }
+  #group3 .parallax__layer--base {
+    background: rgb(153,216,101);
+  }
+
+  #group7 {
+    z-index: 3; /* slide over group 7 */
+  }
+  #group7 .parallax__layer--base {
+    background: rgb(255,241,100);
+  }
+
+  /* LOADER */ 
+
+  #group1 .parallax__layer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .loader {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    zoom: 1.5;
+  }
+  
+  .loader:after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: url('img/bottle.svg') no-repeat;
+    background-size: contain;
+    position: relative;
+  }
+  
+  .progress {
+    height: 100%;
+    width: 100%;
+    background-color: #f4a261;
+    animation: rotate 2s linear infinite;
+    border-radius: 30%;
+    position: absolute;
+    transition: all 0.5s;
+  }
+  
+  .bubble {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 100%;
     opacity: 0;
+    animation: bubble-up 2s ease-in;
   }
-
-  20% {
-    opacity: 1;
-    transform: translateX(10px);
+  
+  .bubble:before {
+    content: '';
+    display: block;
+    width: 80%;
+    height: 80%;
+    margin-top: 2px;
+    margin-left: 2px;
+    transform: rotateZ(-45deg);
+    border-radius: 100%;
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
   }
-
-  50% {
-    opacity: 1;
-    transform: translateX(-10px);
+  
+  @keyframes rotate {
+    0% {
+      transform: rotateZ(0);
+    }
+  
+    100% {
+      transform: rotateZ(180deg);
+    }
   }
-
-  100% {
-    bottom: 50%;
-    opacity: 0;
-    transform: translateX(0);
+  
+  @keyframes bubble-up {
+    0% {
+      opacity: 0;
+    }
+  
+    20% {
+      opacity: 1;
+      transform: translateX(10px);
+    }
+  
+    50% {
+      opacity: 1;
+      transform: translateX(-10px);
+    }
+  
+    100% {
+      bottom: 50%;
+      opacity: 0;
+      transform: translateX(0);
+    }
   }
-}
-
-/* ------- video #2 --------- 
-  palette: #264653 #2a9d8f #e9c46a #f4a261 #e76f51;
-*/
-
-body.loaded {
-  background: #2a9d8f;
-  margin: 0;
-  padding: 0;
-  overflow-y: auto;
-}
-
-.layer-start {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  background: #264653;
-  margin-top: 0;
-  transition: all 2s cubic-bezier(0.73, 0.02, 0.43, 0.88);
-}
-
-.layer-start.slide-hide {
-  margin-top: -100vh;
-}
-
-.layer-article {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: calc(100vw + 600px);
-  transition: all 2s ease-out;
-  transform: translateX(0);
-}
-
-.layer-article.slide-show {
-  margin-top: 0;
-  margin-left: 0;
-  transform: translateX(-300px);
-}
-
-h1 {
-  padding: 6px 10px;
-  color: #fff;
-  font-size: 72px;
-}
-
-.layer-article p {
-  font-size: 36px;
-  color: #fff;
-}
-
-.parallax-layer {
-  transform: translateZ(0);
-}
-
-/* SereZHka */
-
-.content {
-  background-color: #264653;
-  width: 100vw;
-  text-align: center;
-  margin-top: 100vh;
-  transform: translateZ(-1px) scale(2);
-  box-shadow: #000 5px;
-}
-
-.content p {
-  padding: 60px 0px 60px 0px;
-  font-size: 24px;
-}
-.parallax {
-  perspective: 1px;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background-image: url(/img/downtown.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.container {
-  max-width: 1600px;
-  margin: auto;
-  color: #979797;
-}
