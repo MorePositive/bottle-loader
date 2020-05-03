@@ -120,7 +120,6 @@ body.loading #headline, body.loading #content, body.loading #footer {
   font-size: 64px;
 }
 
-
 #content {
   z-index: 4;
 }
@@ -136,11 +135,20 @@ body.loading #headline, body.loading #content, body.loading #footer {
   z-index: 3;
 }
 #footer .layer {
-  background-image: url(img/woman.jpg);
-  background-size: contain;
+  background-image: url(img/bottles.jpg);
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.layer .right, .layer .left {
+	background: rgba(0,0,0,0.5);
+	padding: 10px;
+    margin: 10px;
+    width: 30%;
 }
 
 .loader {
